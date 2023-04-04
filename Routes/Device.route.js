@@ -5,5 +5,5 @@ const DeviceController = require('../Controllers/Device.Controller')
 
 router.post('/register', DeviceController.registerDevice)
 
-router.post('/devices', DeviceController.getDevices)
+router.get('/devices', DeviceController.getDevices)
 module.exports = router

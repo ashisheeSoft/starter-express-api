@@ -21,13 +21,11 @@ module.exports = {
       },
       getDevices: async (req, res, next) => {
         try {
-          const { refreshToken } = req.body
-          if (!refreshToken) throw createError.BadRequest()
-          const userId = await verifyRefreshToken(refreshToken)
-    
-          const accessToken = await signAccessToken(userId)
-          const refToken = await signRefreshToken(userId)
-          res.send({ accessToken: accessToken, refreshToken: refToken })
+          let  query = req.query;
+          const deviceList = await Device.find({userId:query.userId});
+          if (!deviceList)
+                throw createError.Conflict(`No device Found for the user ${query.userId}`);
+          res.send({devices:deviceList});
         } catch (error) {
           next(error)
         }
