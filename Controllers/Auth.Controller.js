@@ -13,9 +13,7 @@ const {
       try {
         // const { email, password } = req.body
         // if (!email || !password) throw createError.BadRequest()
-        console.log('here in program');
         const result = await authSchema.validateAsync(req.body)
-        console.log(result)
 
         result.mobileOtp = 9999;
         result.emailOtp = 9999;

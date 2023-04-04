@@ -16,8 +16,15 @@ const mobileOtpVerifySchema = Joi.object({
   mobileOtp: Joi.number().required(),
 })
 
+const deviceRegistrationSchema = Joi.object({
+  deviceId: Joi.string().required(),
+  deviceName: Joi.string().required(),
+  userId: Joi.string().required()
+})
+
 module.exports = {
   authSchema,
   loginSchema,
   mobileOtpVerifySchema,
+  deviceRegistrationSchema
 }

@@ -8,6 +8,7 @@ require('./helpers/init_mongodb')
 const { verifyAccessToken } = require('./helpers/jwt_helper')
 
 const AuthRoute = require('./Routes/Auth.route')
+const DeviceRoute = require('./Routes/Device.route')
 
 const app = express()
 app.use(morgan('dev'))
@@ -21,6 +22,7 @@ app.get('/', verifyAccessToken, async (req, res, next) => {
 
 
 app.use('/api/v1/auth', AuthRoute)
+app.use('/api/v1/device',DeviceRoute)
 
 app.use(async (req, res, next) => {
     next(createError.NotFound())
