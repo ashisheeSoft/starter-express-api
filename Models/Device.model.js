@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const bcrypt = require('bcrypt')
 
 const DeviceSchema = new Schema({
     userId: {
@@ -15,12 +14,18 @@ const DeviceSchema = new Schema({
     },
     deviceName: {
         type: String,
-        default: true,
+        required: true,
     },
+    switchValue: [
+        {
+            code:{type:String,required:true},
+            name:{type:String,required:true}
+        }
+    ]
 },
-    {
-        timestamps: true,
-    })
+{
+    timestamps: true,
+});
 
 
 

@@ -19,12 +19,20 @@ const mobileOtpVerifySchema = Joi.object({
 const deviceRegistrationSchema = Joi.object({
   deviceId: Joi.string().required(),
   deviceName: Joi.string().required(),
-  userId: Joi.string().required()
+  userId: Joi.string().required(),
+  type: Joi.string().required()
+})
+
+const switchUpdateSchema = Joi.object({
+  deviceId: Joi.string().required(),
+  code: Joi.string().required(),
+  name: Joi.string().required()
 })
 
 module.exports = {
   authSchema,
   loginSchema,
   mobileOtpVerifySchema,
-  deviceRegistrationSchema
+  deviceRegistrationSchema,
+  switchUpdateSchema
 }
