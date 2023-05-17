@@ -29,10 +29,17 @@ const switchUpdateSchema = Joi.object({
   name: Joi.string().required()
 })
 
+const messageSchema = Joi.object({
+  deviceId: Joi.string().required(),
+  relayId: Joi.string().required(),
+  code: Joi.string().required(),
+})
+
 module.exports = {
   authSchema,
   loginSchema,
   mobileOtpVerifySchema,
   deviceRegistrationSchema,
-  switchUpdateSchema
+  switchUpdateSchema,
+  messageSchema
 }

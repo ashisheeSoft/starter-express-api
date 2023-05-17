@@ -5,10 +5,12 @@ const morgan = require('morgan')
 const createError = require('http-errors')
 require('dotenv').config()
 require('./helpers/init_mongodb')
+require('./helpers/init_mqtt')
 const { verifyAccessToken } = require('./helpers/jwt_helper')
 
 const AuthRoute = require('./Routes/Auth.route')
 const DeviceRoute = require('./Routes/Device.route')
+const MessageRoute = require('./Routes/Message.route');
 
 const app = express()
 app.use(morgan('dev'))
@@ -23,6 +25,7 @@ app.get('/', verifyAccessToken, async (req, res, next) => {
 
 app.use('/api/v1/auth', AuthRoute)
 app.use('/api/v1/device',DeviceRoute)
+app.use('/api/v1/message',MessageRoute)
 
 app.use(async (req, res, next) => {
     next(createError.NotFound())
